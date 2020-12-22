@@ -17,9 +17,11 @@
         <li>
             <a href="{{route('dashboard')}}" class="p-3">Dashboard</a>
         </li>
-        <li>
-            <a href="{{route('posts')}}" class="p-3">Post</a>
-        </li>
+        @auth
+            <li>
+                <a href="{{route('posts')}}" class="p-3">Post</a>
+            </li>
+        @endauth
     </ul>
 
     <ul class="flex items-center">
@@ -29,10 +31,10 @@
             </li>
             <li>
                 <form action="{{route('logout')}}" method="post" class=" p-3 inline">
-                  @csrf
+                    @csrf
                     <button type="submit">Logout</button>
                 </form>
-{{--                <a href="{{route('logout')}}" class="p-3">Logout</a>--}}
+                {{--                <a href="{{route('logout')}}" class="p-3">Logout</a>--}}
             </li>
         @endauth
         @guest()

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostLikeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,8 +32,13 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/posts', [PostController::class, 'index'])->name('posts')->middleware('auth');
 Route::post('/posts', [PostController::class, 'store']);
+//likes
+//stavljanje modela post u url zove se route-model-binding
+Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
+Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');
+
 
 
 
