@@ -28,14 +28,14 @@ class PostController extends Controller {
     }
 
     public function destroy(Post $post) {
-
-//        if(!$post->ownedBy(auth()->user())){
-//            ///ako se pokušava brisati a nisu onog koji je prijavljen
-//            dd('Not authenticated!!!');
-//        }
-
+        //regulated by policy
         $this->authorize('delete',$post);
         $post->delete();
         return back();
+    }
+
+    public function show(Post $post) {
+
+        return view('posts.show',['post' => $post]);
     }
 }
