@@ -34,10 +34,13 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts')->middleware('auth');
 Route::post('/posts', [PostController::class, 'store']);
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
 //likes
 //stavljanje modela post u url zove se route-model-binding
 Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
 Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');
+
 
 
 

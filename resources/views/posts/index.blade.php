@@ -35,6 +35,19 @@
                         <p class="mb-2">{{$post->body}}</p>
                     </div>
 
+
+                    @can('delete',$post)
+                        <div>
+                            {{--                        delete post only if belongs to Us--}}
+                            <form action="{{route('posts.destroy',$post)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-blue-500">Delete</button>
+
+                            </form>
+                        </div>
+                    @endcan
+
                     {{--                    like / unlike--}}
 
                     <div class="flex items-center">
