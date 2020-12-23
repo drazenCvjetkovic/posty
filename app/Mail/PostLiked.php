@@ -5,7 +5,7 @@ namespace App\Mail;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
+ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
 class PostLiked extends Mailable
